@@ -1,18 +1,13 @@
 #pragma once
-typedef struct Node {
-    int data;
-    struct Node* next;
-    struct Node* prev;
-} Node;
 
-Node* createNode(int data);
-void insertAtBeginning(Node** head, int data);
-void insertAtEnd(Node** head, int data);
-void insertAtPosition(Node** head, int data, int position);
-void deleteAtBeginning(Node** head);
-void deleteAtEnd(Node** head);
-void deleteAtPosition(Node** head, int position);
-void printListForward(Node* head);
-void printListReverse(Node* head);
+typedef struct {
+  int *array;
+  size_t used;
+  size_t size;
+} Array;
+
+void initArray(Array *a, size_t initialSize);
+void insertArray(Array *a, int element);
+void freeArray(Array *a);
 
 
