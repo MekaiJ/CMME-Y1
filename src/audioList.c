@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Dynamic array to hold all filepath strings of an album directory
 typedef struct {
   char **array;
   size_t used;
@@ -18,7 +19,7 @@ void insertArray(Array *a, char *filepath) {
     a->size *= 2;
     a->array = realloc(a->array, a->size * sizeof(char *));
   }
-  a->array[a->used++] = strdup(filepath); //copy the entire filepath string
+  a->array[a->used++] = strdup(filepath); // copy the entire filepath string
 }
 
 void freeArray(Array *a) {
