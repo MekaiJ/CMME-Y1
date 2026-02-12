@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Iinclude
 
 SRC = src/main.c src/audioList.c
-OUT = cmme
+OUT = build/cmme
 
 all: $(OUT)
 
