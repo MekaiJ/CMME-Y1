@@ -1,5 +1,7 @@
+#define _POSIX_C_SOURCE 200809L
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // Dynamic array to hold all filepath strings of an album directory
 typedef struct {
@@ -25,10 +27,22 @@ void insertArray(Array *a, char *filepath) {
 void freeArray(Array *a) {
   if (a->array != NULL) {
     for (size_t i = 0; i < a->used; i++) {
-        free(a->array[i]); 
+      free(a->array[i]); 
     }
     free(a->array);
   }
   a->array = NULL;
   a->used = a->size = 0;
+}
+
+char *toString(Array *a) {
+  char *str = malloc(4086 * sizeof(char));
+  str[0] = '\0';
+  for (size_t i = 0; i < a->used; i++) {
+    if(i > 0) {
+      strcat(str, ", ");
+    }
+    strcat(str, a->array[i]);
+  }
+  return str;
 }
